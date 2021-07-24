@@ -1,0 +1,156 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-me-heading" data-cy="MeCreateUpdateHeading" jhiTranslate="personalWebsiteApp.me.home.createOrEditLabel">
+        Create or edit a Me
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="form-group" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-control-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="personalWebsiteApp.me.formalName" for="field_formalName">Formal Name</label>
+          <input
+            type="text"
+            class="form-control"
+            name="formalName"
+            id="field_formalName"
+            data-cy="formalName"
+            formControlName="formalName"
+          />
+          <div *ngIf="editForm.get('formalName')!.invalid && (editForm.get('formalName')!.dirty || editForm.get('formalName')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('formalName')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="personalWebsiteApp.me.legalName" for="field_legalName">Legal Name</label>
+          <input type="text" class="form-control" name="legalName" id="field_legalName" data-cy="legalName" formControlName="legalName" />
+          <div *ngIf="editForm.get('legalName')!.invalid && (editForm.get('legalName')!.dirty || editForm.get('legalName')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('legalName')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="personalWebsiteApp.me.dob" for="field_dob">Dob</label>
+          <div class="input-group">
+            <input
+              id="field_dob"
+              data-cy="dob"
+              type="text"
+              class="form-control"
+              name="dob"
+              ngbDatepicker
+              #dobDp="ngbDatepicker"
+              formControlName="dob"
+            />
+            <span class="input-group-append">
+              <button type="button" class="btn btn-secondary" (click)="dobDp.toggle()"><fa-icon icon="calendar-alt"></fa-icon></button>
+            </span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="personalWebsiteApp.me.email" for="field_email">Email</label>
+          <input type="text" class="form-control" name="email" id="field_email" data-cy="email" formControlName="email" />
+          <div *ngIf="editForm.get('email')!.invalid && (editForm.get('email')!.dirty || editForm.get('email')!.touched)">
+            <small class="form-text text-danger" *ngIf="editForm.get('email')?.errors?.required" jhiTranslate="entity.validation.required">
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="personalWebsiteApp.me.linkedin" for="field_linkedin">Linkedin</label>
+          <input type="text" class="form-control" name="linkedin" id="field_linkedin" data-cy="linkedin" formControlName="linkedin" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="personalWebsiteApp.me.facebook" for="field_facebook">Facebook</label>
+          <input type="text" class="form-control" name="facebook" id="field_facebook" data-cy="facebook" formControlName="facebook" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="personalWebsiteApp.me.instagram" for="field_instagram">Instagram</label>
+          <input type="text" class="form-control" name="instagram" id="field_instagram" data-cy="instagram" formControlName="instagram" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="personalWebsiteApp.me.resume" for="field_resume">Resume</label>
+          <input type="text" class="form-control" name="resume" id="field_resume" data-cy="resume" formControlName="resume" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="personalWebsiteApp.me.aboutMe" for="field_aboutMe">About Me</label>
+          <textarea class="form-control" name="aboutMe" id="field_aboutMe" data-cy="aboutMe" formControlName="aboutMe"></textarea>
+          <div *ngIf="editForm.get('aboutMe')!.invalid && (editForm.get('aboutMe')!.dirty || editForm.get('aboutMe')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('aboutMe')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="personalWebsiteApp.me.aboutMeShort" for="field_aboutMeShort"
+            >About Me Short</label
+          >
+          <textarea
+            class="form-control"
+            name="aboutMeShort"
+            id="field_aboutMeShort"
+            data-cy="aboutMeShort"
+            formControlName="aboutMeShort"
+          ></textarea>
+          <div
+            *ngIf="editForm.get('aboutMeShort')!.invalid && (editForm.get('aboutMeShort')!.dirty || editForm.get('aboutMeShort')!.touched)"
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('aboutMeShort')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

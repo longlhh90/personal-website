@@ -1,0 +1,33 @@
+{
+  "personalWebsiteApp": {
+    "me": {
+      "home": {
+        "title": "Us",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Me",
+        "createOrEditLabel": "Create or edit a Me",
+        "notFound": "No Us found"
+      },
+      "created": "A new Me is created with identifier {{ param }}",
+      "updated": "A Me is updated with identifier {{ param }}",
+      "deleted": "A Me is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Me {{ id }}?"
+      },
+      "detail": {
+        "title": "Me"
+      },
+      "id": "ID",
+      "formalName": "Formal Name",
+      "legalName": "Legal Name",
+      "dob": "Dob",
+      "email": "Email",
+      "linkedin": "Linkedin",
+      "facebook": "Facebook",
+      "instagram": "Instagram",
+      "resume": "Resume",
+      "aboutMe": "About Me",
+      "aboutMeShort": "About Me Short"
+    }
+  }
+}

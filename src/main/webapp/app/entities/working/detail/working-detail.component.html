@@ -1,0 +1,64 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="working">
+      <h2 data-cy="workingDetailsHeading"><span jhiTranslate="personalWebsiteApp.working.detail.title">Working</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ working.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="personalWebsiteApp.working.position">Position</span></dt>
+        <dd>
+          <span>{{ working.position }}</span>
+        </dd>
+        <dt><span jhiTranslate="personalWebsiteApp.working.company">Company</span></dt>
+        <dd>
+          <span>{{ working.company }}</span>
+        </dd>
+        <dt><span jhiTranslate="personalWebsiteApp.working.countryName">Country Name</span></dt>
+        <dd>
+          <span>{{ working.countryName }}</span>
+        </dd>
+        <dt><span jhiTranslate="personalWebsiteApp.working.startMonth">Start Month</span></dt>
+        <dd>
+          <span>{{ working.startMonth }}</span>
+        </dd>
+        <dt><span jhiTranslate="personalWebsiteApp.working.startYear">Start Year</span></dt>
+        <dd>
+          <span>{{ working.startYear }}</span>
+        </dd>
+        <dt><span jhiTranslate="personalWebsiteApp.working.endMonth">End Month</span></dt>
+        <dd>
+          <span>{{ working.endMonth }}</span>
+        </dd>
+        <dt><span jhiTranslate="personalWebsiteApp.working.endYear">End Year</span></dt>
+        <dd>
+          <span>{{ working.endYear }}</span>
+        </dd>
+        <dt><span jhiTranslate="personalWebsiteApp.working.isPresent">Is Present</span></dt>
+        <dd>
+          <span>{{ working.isPresent }}</span>
+        </dd>
+        <dt><span jhiTranslate="personalWebsiteApp.working.workDuty">Work Duty</span></dt>
+        <dd>
+          <span>{{ working.workDuty }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/working', working.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

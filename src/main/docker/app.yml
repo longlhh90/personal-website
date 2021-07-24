@@ -1,0 +1,8 @@
+version: '3.8'
+services:
+  personal_website-app:
+    build: ../../..
+    container_name: personal_website-app
+    environment:
+    ports:
+      - 8081:8081

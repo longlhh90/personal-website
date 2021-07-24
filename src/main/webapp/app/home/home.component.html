@@ -1,0 +1,17 @@
+<div class="row">
+  <div class="col-md-3">
+    <span class="hipster img-fluid rounded"></span>
+  </div>
+
+  <div class="col-md-9">
+    <h1 class="display-4">Welcome to my personal website!</h1>
+
+    <p class="lead">This is nothing here but everything will be here soon</p>
+    <div *ngIf="meInfo">
+      <p>{{ meInfo.formalName }}</p>
+      <p>{{ meInfo.legalName }}</p>
+      <p>{{ meInfo.aboutMeShort }}</p>
+      <p>{{ meInfo.aboutMe }}</p>
+    </div>
+  </div>
+</div>

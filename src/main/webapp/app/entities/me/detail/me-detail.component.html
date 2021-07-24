@@ -1,0 +1,68 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="me">
+      <h2 data-cy="meDetailsHeading"><span jhiTranslate="personalWebsiteApp.me.detail.title">Me</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ me.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="personalWebsiteApp.me.formalName">Formal Name</span></dt>
+        <dd>
+          <span>{{ me.formalName }}</span>
+        </dd>
+        <dt><span jhiTranslate="personalWebsiteApp.me.legalName">Legal Name</span></dt>
+        <dd>
+          <span>{{ me.legalName }}</span>
+        </dd>
+        <dt><span jhiTranslate="personalWebsiteApp.me.dob">Dob</span></dt>
+        <dd>
+          <span>{{ me.dob | formatMediumDate }}</span>
+        </dd>
+        <dt><span jhiTranslate="personalWebsiteApp.me.email">Email</span></dt>
+        <dd>
+          <span>{{ me.email }}</span>
+        </dd>
+        <dt><span jhiTranslate="personalWebsiteApp.me.linkedin">Linkedin</span></dt>
+        <dd>
+          <span>{{ me.linkedin }}</span>
+        </dd>
+        <dt><span jhiTranslate="personalWebsiteApp.me.facebook">Facebook</span></dt>
+        <dd>
+          <span>{{ me.facebook }}</span>
+        </dd>
+        <dt><span jhiTranslate="personalWebsiteApp.me.instagram">Instagram</span></dt>
+        <dd>
+          <span>{{ me.instagram }}</span>
+        </dd>
+        <dt><span jhiTranslate="personalWebsiteApp.me.resume">Resume</span></dt>
+        <dd>
+          <span>{{ me.resume }}</span>
+        </dd>
+        <dt><span jhiTranslate="personalWebsiteApp.me.aboutMe">About Me</span></dt>
+        <dd>
+          <span>{{ me.aboutMe }}</span>
+        </dd>
+        <dt><span jhiTranslate="personalWebsiteApp.me.aboutMeShort">About Me Short</span></dt>
+        <dd>
+          <span>{{ me.aboutMeShort }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/me', me.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

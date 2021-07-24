@@ -1,0 +1,86 @@
+<div>
+  <h2 id="page-heading" data-cy="MeHeading">
+    <span jhiTranslate="personalWebsiteApp.me.home.title">Us</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info mr-2" (click)="loadAll()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="personalWebsiteApp.me.home.refreshListLabel">Refresh List</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-me"
+        [routerLink]="['/me/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="personalWebsiteApp.me.home.createLabel"> Create a new Me </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="us?.length === 0">
+    <span jhiTranslate="personalWebsiteApp.me.home.notFound">No us found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="us && us.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr>
+          <th scope="col"><span jhiTranslate="global.field.id">ID</span></th>
+          <th scope="col"><span jhiTranslate="personalWebsiteApp.me.formalName">Formal Name</span></th>
+          <th scope="col"><span jhiTranslate="personalWebsiteApp.me.legalName">Legal Name</span></th>
+          <th scope="col"><span jhiTranslate="personalWebsiteApp.me.dob">Dob</span></th>
+          <th scope="col"><span jhiTranslate="personalWebsiteApp.me.email">Email</span></th>
+          <th scope="col"><span jhiTranslate="personalWebsiteApp.me.linkedin">Linkedin</span></th>
+          <th scope="col"><span jhiTranslate="personalWebsiteApp.me.facebook">Facebook</span></th>
+          <th scope="col"><span jhiTranslate="personalWebsiteApp.me.instagram">Instagram</span></th>
+          <th scope="col"><span jhiTranslate="personalWebsiteApp.me.resume">Resume</span></th>
+          <th scope="col"><span jhiTranslate="personalWebsiteApp.me.aboutMe">About Me</span></th>
+          <th scope="col"><span jhiTranslate="personalWebsiteApp.me.aboutMeShort">About Me Short</span></th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let me of us; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/me', me.id, 'view']">{{ me.id }}</a>
+          </td>
+          <td>{{ me.formalName }}</td>
+          <td>{{ me.legalName }}</td>
+          <td>{{ me.dob | formatMediumDate }}</td>
+          <td>{{ me.email }}</td>
+          <td>{{ me.linkedin }}</td>
+          <td>{{ me.facebook }}</td>
+          <td>{{ me.instagram }}</td>
+          <td>{{ me.resume }}</td>
+          <td>{{ me.aboutMe }}</td>
+          <td>{{ me.aboutMeShort }}</td>
+          <td class="text-right">
+            <div class="btn-group">
+              <button type="submit" [routerLink]="['/me', me.id, 'view']" class="btn btn-info btn-sm" data-cy="entityDetailsButton">
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button type="submit" [routerLink]="['/me', me.id, 'edit']" class="btn btn-primary btn-sm" data-cy="entityEditButton">
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(me)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

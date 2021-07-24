@@ -1,0 +1,94 @@
+<div>
+  <h2 id="page-heading" data-cy="WorkingHeading">
+    <span jhiTranslate="personalWebsiteApp.working.home.title">Workings</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info mr-2" (click)="loadAll()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="personalWebsiteApp.working.home.refreshListLabel">Refresh List</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-working"
+        [routerLink]="['/working/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="personalWebsiteApp.working.home.createLabel"> Create a new Working </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="workings?.length === 0">
+    <span jhiTranslate="personalWebsiteApp.working.home.notFound">No workings found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="workings && workings.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr>
+          <th scope="col"><span jhiTranslate="global.field.id">ID</span></th>
+          <th scope="col"><span jhiTranslate="personalWebsiteApp.working.position">Position</span></th>
+          <th scope="col"><span jhiTranslate="personalWebsiteApp.working.company">Company</span></th>
+          <th scope="col"><span jhiTranslate="personalWebsiteApp.working.countryName">Country Name</span></th>
+          <th scope="col"><span jhiTranslate="personalWebsiteApp.working.startMonth">Start Month</span></th>
+          <th scope="col"><span jhiTranslate="personalWebsiteApp.working.startYear">Start Year</span></th>
+          <th scope="col"><span jhiTranslate="personalWebsiteApp.working.endMonth">End Month</span></th>
+          <th scope="col"><span jhiTranslate="personalWebsiteApp.working.endYear">End Year</span></th>
+          <th scope="col"><span jhiTranslate="personalWebsiteApp.working.isPresent">Is Present</span></th>
+          <th scope="col"><span jhiTranslate="personalWebsiteApp.working.workDuty">Work Duty</span></th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let working of workings; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/working', working.id, 'view']">{{ working.id }}</a>
+          </td>
+          <td>{{ working.position }}</td>
+          <td>{{ working.company }}</td>
+          <td>{{ working.countryName }}</td>
+          <td>{{ working.startMonth }}</td>
+          <td>{{ working.startYear }}</td>
+          <td>{{ working.endMonth }}</td>
+          <td>{{ working.endYear }}</td>
+          <td>{{ working.isPresent }}</td>
+          <td>{{ working.workDuty }}</td>
+          <td class="text-right">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/working', working.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/working', working.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(working)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

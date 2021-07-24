@@ -1,0 +1,172 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-working-heading" data-cy="WorkingCreateUpdateHeading" jhiTranslate="personalWebsiteApp.working.home.createOrEditLabel">
+        Create or edit a Working
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="form-group" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-control-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="personalWebsiteApp.working.position" for="field_position">Position</label>
+          <input type="text" class="form-control" name="position" id="field_position" data-cy="position" formControlName="position" />
+          <div *ngIf="editForm.get('position')!.invalid && (editForm.get('position')!.dirty || editForm.get('position')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('position')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="personalWebsiteApp.working.company" for="field_company">Company</label>
+          <input type="text" class="form-control" name="company" id="field_company" data-cy="company" formControlName="company" />
+          <div *ngIf="editForm.get('company')!.invalid && (editForm.get('company')!.dirty || editForm.get('company')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('company')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="personalWebsiteApp.working.countryName" for="field_countryName"
+            >Country Name</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="countryName"
+            id="field_countryName"
+            data-cy="countryName"
+            formControlName="countryName"
+          />
+          <div *ngIf="editForm.get('countryName')!.invalid && (editForm.get('countryName')!.dirty || editForm.get('countryName')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('countryName')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="personalWebsiteApp.working.startMonth" for="field_startMonth">Start Month</label>
+          <input
+            type="number"
+            class="form-control"
+            name="startMonth"
+            id="field_startMonth"
+            data-cy="startMonth"
+            formControlName="startMonth"
+          />
+          <div *ngIf="editForm.get('startMonth')!.invalid && (editForm.get('startMonth')!.dirty || editForm.get('startMonth')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('startMonth')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              [hidden]="!editForm.get('startMonth')?.errors?.number"
+              jhiTranslate="entity.validation.number"
+            >
+              This field should be a number.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="personalWebsiteApp.working.startYear" for="field_startYear">Start Year</label>
+          <input type="number" class="form-control" name="startYear" id="field_startYear" data-cy="startYear" formControlName="startYear" />
+          <div *ngIf="editForm.get('startYear')!.invalid && (editForm.get('startYear')!.dirty || editForm.get('startYear')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('startYear')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              [hidden]="!editForm.get('startYear')?.errors?.number"
+              jhiTranslate="entity.validation.number"
+            >
+              This field should be a number.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="personalWebsiteApp.working.endMonth" for="field_endMonth">End Month</label>
+          <input type="number" class="form-control" name="endMonth" id="field_endMonth" data-cy="endMonth" formControlName="endMonth" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="personalWebsiteApp.working.endYear" for="field_endYear">End Year</label>
+          <input type="number" class="form-control" name="endYear" id="field_endYear" data-cy="endYear" formControlName="endYear" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="personalWebsiteApp.working.isPresent" for="field_isPresent">Is Present</label>
+          <input type="checkbox" class="form-check" name="isPresent" id="field_isPresent" data-cy="isPresent" formControlName="isPresent" />
+          <div *ngIf="editForm.get('isPresent')!.invalid && (editForm.get('isPresent')!.dirty || editForm.get('isPresent')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('isPresent')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="personalWebsiteApp.working.workDuty" for="field_workDuty">Work Duty</label>
+          <textarea class="form-control" name="workDuty" id="field_workDuty" data-cy="workDuty" formControlName="workDuty"></textarea>
+          <div *ngIf="editForm.get('workDuty')!.invalid && (editForm.get('workDuty')!.dirty || editForm.get('workDuty')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('workDuty')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
