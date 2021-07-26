@@ -34,7 +34,7 @@
     "authenticationType": "jwt",
     "clientFramework": "angularX",
     "withAdminUi": true,
-    "clientTheme": "materia",
+    "clientTheme": "vapor",
     "clientThemeVariant": "primary",
     "enableTranslation": true,
     "nativeLanguage": "en",

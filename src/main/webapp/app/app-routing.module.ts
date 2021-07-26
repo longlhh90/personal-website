@@ -33,6 +33,10 @@ const LAYOUT_ROUTES = [navbarRoute, ...errorRoute];
           path: 'about-me',
           loadChildren: () => import('./about-me/aboutme.module').then(m => m.AboutMeModule),
         },
+        {
+          path: 'portfolio',
+          loadChildren: () => import('./portfolio/portfolio.module').then(m => m.PortfolioModule),
+        },
         ...LAYOUT_ROUTES,
       ],
       { enableTracing: DEBUG_INFO_ENABLED }
