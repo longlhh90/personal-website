@@ -1,13 +1,11 @@
-<jhi-page-ribbon></jhi-page-ribbon>
+<ng-container>
+  <!-- authed-layout -->
+  <ng-template [ngIf]="isAuthenticated()" [ngIfElse]="unauthed">
+    <jhi-authed-layout></jhi-authed-layout>
+  </ng-template>
 
-<div>
-  <router-outlet name="navbar"></router-outlet>
-</div>
-
-<div class="container-fluid">
-  <div class="card jh-card">
-    <router-outlet></router-outlet>
-  </div>
-
-  <jhi-footer></jhi-footer>
-</div>
+  <!-- unauthed-layout. We have to use ng-template here for router-outlet -->
+  <ng-template #unauthed>
+    <jhi-unauthed-layout></jhi-unauthed-layout>
+  </ng-template>
+</ng-container>
