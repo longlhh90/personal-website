@@ -42,9 +42,9 @@ export class AboutMeComponent implements OnInit {
     //the css is handling 4 items highlight only
     this.list_highlights = [
       { name: 'Great Attitude', value: 10, icon: 'bi bi-emoji-smile' },
-      { name: 'Languagues (English, Vietnamese)', value: 2, icon: 'bi bi-translate' },
+      { name: 'Languagues', value: 2, icon: 'bi bi-translate' },
       { name: 'Years of Working', value: this.time, icon: 'bi bi-briefcase' },
-      { name: 'Big Achievement', value: 2, icon: 'bi bi-award' },
+      { name: 'Big Achievements', value: 2, icon: 'bi bi-award' },
     ];
 
     //the css is handling 6 items skill only
