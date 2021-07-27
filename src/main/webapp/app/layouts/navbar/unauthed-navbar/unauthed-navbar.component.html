@@ -1,0 +1,31 @@
+<!-- ======= Header ======= -->
+<header id="header" [ngClass]="isHomeUrl ? '' : 'header-top'">
+  <div class="container">
+    <h1><a routerLink="">Lukas Le</a></h1>
+    <h2>I'm a professional <span> Software Developer</span> in Canada</h2>
+
+    <nav id="navbar" [ngClass]="isMobileNavClicked ? 'navbar navbar-mobile' : 'navbar'">
+      <ul>
+        <li>
+          <a class="nav-link" [routerLinkActiveOptions]="{ exact: true }" routerLinkActive="active" routerLink="" (click)="onMobileNav()"
+            >Home</a
+          >
+        </li>
+        <li><a class="nav-link" routerLinkActive="active" routerLink="about-me" (click)="onMobileNav()">About</a></li>
+        <li><a class="nav-link" routerLinkActive="active" routerLink="resume" (click)="onMobileNav()">Resume</a></li>
+        <li><a class="nav-link" routerLinkActive="active" routerLink="portfolio" (click)="onMobileNav()">Portfolio</a></li>
+        <li><a class="nav-link" routerLinkActive="active" routerLink="contact" (click)="onMobileNav()">Contact</a></li>
+      </ul>
+      <i (click)="onMobileNav()" [ngClass]="isMobileNavClicked ? 'bi bi-x mobile-nav-toggle' : 'bi bi-list mobile-nav-toggle'"></i>
+    </nav>
+    <!-- .navbar -->
+
+    <div class="social-links">
+      <a href="https://github.com/longlhh90" target="_blank" rel="noopener noreferrer"><i class="bi bi-github"></i></a>
+      <a href="https://linkedin.com/in/l0ng-le" target="_blank" rel="noopener noreferrer"><i class="bi bi-linkedin"></i></a>
+      <a href="https://facebook.com" target="_blank" rel="noopener noreferrer"><i class="bi bi-facebook"></i></a>
+      <a href="https://twitter.com" target="_blank" rel="noopener noreferrer"><i class="bi bi-twitter"></i></a>
+    </div>
+  </div>
+</header>
+<!-- End Header -->
