@@ -1,3 +1,115 @@
-<div *ngIf="meInfo$ | async as meInfo">
-  <p>{{ meInfo[0].aboutMe }}</p>
-</div>
+<!-- ======= About Section ======= -->
+<section id="about" class="about section-show">
+  <!-- ======= About Me ======= -->
+  <div class="about-me container">
+    <div class="section-title">
+      <h2>About</h2>
+      <p>Learn more about me</p>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-4" data-aos="fade-right">
+        <img src="../../content/images/lukas2.jpg" class="img-fluid" alt="" />
+      </div>
+      <div class="col-lg-8 pt-4 pt-lg-0 content" data-aos="fade-left">
+        <h3>Software Developer</h3>
+        <p class="fst-italic">Hi there, my name is Lukas. The below is full detail about my self.</p>
+        <div class="row">
+          <div class="col-lg-6">
+            <ul>
+              <li><i class="bi bi-chevron-right"></i> <strong>Website:</strong> <span>www.longlhh.ca</span></li>
+              <li><i class="bi bi-chevron-right"></i> <strong>Phone:</strong> <span>+1 306 xxx xxxx</span></li>
+              <li><i class="bi bi-chevron-right"></i> <strong>City:</strong> <span>Saskatoon, SK, Canada</span></li>
+            </ul>
+          </div>
+          <div class="col-lg-6">
+            <ul>
+              <li><i class="bi bi-chevron-right"></i> <strong>Email:</strong> <span>longlhh90@gmail.com</span></li>
+              <li><i class="bi bi-chevron-right"></i> <strong>Freelance:</strong> <span>Available</span></li>
+            </ul>
+          </div>
+        </div>
+        <p>
+          I've been working in IT for {{ time }} years and have been through most of positions in IT department (Tester, Developer, Product
+          Owner).
+        </p>
+        <p>
+          I am proficient in Python (Django + Flask frame work) and JavaScript (Angular, React for FE and ExpressJs for BE) but I am
+          confident to pick up anything to learn and use fast.
+        </p>
+        <p>
+          As a diligent, proactive person with a great sense of responsibility, and who knows what should be done to achieve the final goals
+          I am sure that I can be an asset.
+        </p>
+      </div>
+    </div>
+  </div>
+  <!-- End About Me -->
+
+  <!-- ======= Knowledge ======= -->
+  <div class="counts container">
+    <div class="row">
+      <div *ngFor="let hightlight of list_highlights; let i = index" #highlights class="col-lg-3 col-md-6 mt-4">
+        <div class="count-box">
+          <i class="{{ hightlight.icon }}"></i>
+          <span>{{ hightlight.value }}</span>
+          <p>{{ hightlight.name }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ======= Skills  ======= -->
+  <div class="skills container">
+    <div class="section-title">
+      <h2>Skills</h2>
+    </div>
+
+    <div class="row skills-content">
+      <div class="col-lg-6">
+        <div class="progress" *ngFor="let sfe of list_skills_fe; let i = index" #skillsfe>
+          <span class="skill">
+            <i class="{{ sfe.icon }}" style="font-size: xx-large"></i>
+            {{ sfe.name }}
+            <i class="val">{{ sfe.value }}%</i>
+          </span>
+          <div class="progress-bar-wrap">
+            <div class="progress-bar" style="width: 0%"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-6">
+        <div class="progress" *ngFor="let sbe of list_skills_be; let i = index" #skillsbe>
+          <span class="skill">
+            <i class="{{ sbe.icon }}" style="font-size: xx-large"></i>
+            {{ sbe.name }}
+            <i class="val">{{ sbe.value }}%</i>
+          </span>
+          <div class="progress-bar-wrap">
+            <div class="progress-bar" style="width: 0%"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- End Skills -->
+
+  <!-- ======= Interests ======= -->
+  <div class="interests container">
+    <div class="section-title">
+      <h2>Interests</h2>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-3 col-md-4 mt-4" *ngFor="let int of list_interests; let i = index">
+        <div class="icon-box">
+          <i class="{{ int.icon }}" style="{{ int.style }}"></i>
+          <h3>{{ int.name }}</h3>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- End Interests -->
+</section>
+<!-- End About Section -->
