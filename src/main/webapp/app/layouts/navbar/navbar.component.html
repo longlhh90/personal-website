@@ -1,7 +1,7 @@
 <nav *ngIf="isAuthenticated()" data-cy="navbar" class="navbar navbar-dark navbar-expand-md bg-primary">
-  <a class="navbar-brand logo" routerLink="/" (click)="collapseNavbar()">
+  <a class="navbar-brand logo" routerLink="admin" (click)="collapseNavbar()">
     <span class="logo-img"></span>
-    <span class="navbar-title">Lukas Life</span>
+    <span class="navbar-title">Lukas Site</span>
     <!-- <span class="navbar-version">{{ version }}</span> -->
   </a>
   <a
@@ -18,37 +18,9 @@
   </a>
   <div class="navbar-collapse collapse" id="navbarResponsive" [ngbCollapse]="isNavbarCollapsed" [ngSwitch]="isAuthenticated()">
     <ul class="navbar-nav ml-auto">
-      <!--  <li *ngSwitchCase="false" class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
-        <a class="nav-link" routerLink="/" (click)="collapseNavbar()">
-          <span>
-            <span>HOME</span>
-          </span>
-        </a>
-      </li>
-      <li *ngSwitchCase="false" class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
-        <a class="nav-link" routerLink="about-me" (click)="collapseNavbar()">
-          <span>
-            <span>ABOUT ME</span>
-          </span>
-        </a>
-      </li>
-      <li *ngSwitchCase="false" class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
-        <a class="nav-link" routerLink="portfolio" (click)="collapseNavbar()">
-          <span>
-            <span>PORTFOLIO</span>
-          </span>
-        </a>
-      </li>
-      <li *ngSwitchCase="false" class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
-        <a class="nav-link" routerLink="blogs" (click)="collapseNavbar()">
-          <span>
-            <span>BLOG</span>
-          </span>
-        </a>
-      </li> -->
       <!-- Authed Items -->
       <li *ngSwitchCase="true" class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
-        <a class="nav-link" routerLink="/admin" (click)="collapseNavbar()">
+        <a class="nav-link" routerLink="admin" (click)="collapseNavbar()">
           <span>
             <fa-icon icon="home"></fa-icon>
             <span jhiTranslate="global.menu.home">Home</span>
@@ -229,23 +201,3 @@
     </ul>
   </div>
 </nav>
-
-<!-- ======= Header ======= -->
-<header
-  *ngIf="!isAuthenticated()"
-  id="header"
-  class="fixed-top d-flex justify-content-center align-items-center header-transparent header-scrolled"
->
-  <nav id="navbar" class="navbar">
-    <ul>
-      <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
-      <li><a class="nav-link scrollto" href="#about">About</a></li>
-      <li><a class="nav-link scrollto" href="#portfolio">Portfolio</a></li>
-      <li><a class="nav-link scrollto" href="#portfolio">Blog</a></li>
-      <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
-    </ul>
-    <i class="bi bi-list mobile-nav-toggle"></i>
-  </nav>
-  <!-- .navbar -->
-</header>
-<!-- End Header -->
