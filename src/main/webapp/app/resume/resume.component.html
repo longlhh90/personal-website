@@ -1,0 +1,40 @@
+<!-- ======= Resume Section ======= -->
+<section id="resume" class="resume section-show">
+  <div class="container">
+    <div class="section-title">
+      <h2>Resume</h2>
+      <p>Check My Resume</p>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-6">
+        <h3 class="resume-title">Professional Experience</h3>
+
+        <div class="resume-item" *ngFor="let exp of list_experience">
+          <h4>{{ exp.title }}</h4>
+          <h5>{{ exp.startTime }} - {{ exp.endTime ? exp.endTime : 'Present' }}</h5>
+          <p>
+            <em>{{ exp.organization }}, {{ exp.location }} </em>
+          </p>
+          <p></p>
+          <ul>
+            <li *ngFor="let detail of exp.details">{{ detail }}</li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <h3 class="resume-title">Education</h3>
+
+        <div class="resume-item" *ngFor="let edu of list_education">
+          <h4>{{ edu.major }}</h4>
+          <h5>{{ edu.startTime }} - {{ edu.endTime ? edu.endTime : 'Present' }}</h5>
+          <p>
+            <em>{{ edu.organization }}, {{ edu.location }}</em>
+          </p>
+          <p>{{ edu.details[0] }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End Resume Section -->
