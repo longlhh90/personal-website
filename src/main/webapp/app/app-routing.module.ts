@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { errorRoute } from './layouts/error/error.route';
-import { navbarRoute } from './layouts/navbar/navbar.route';
+// import { navbarRoute } from './layouts/navbar/navbar.route';
 import { DEBUG_INFO_ENABLED } from 'app/app.constants';
 import { Authority } from 'app/config/authority.constants';
 
 import { UserRouteAccessService } from 'app/core/auth/user-route-access.service';
 
-const LAYOUT_ROUTES = [navbarRoute, ...errorRoute];
+const LAYOUT_ROUTES = [...errorRoute];
 
 @NgModule({
   imports: [
@@ -36,6 +36,14 @@ const LAYOUT_ROUTES = [navbarRoute, ...errorRoute];
         {
           path: 'portfolio',
           loadChildren: () => import('./portfolio/portfolio.module').then(m => m.PortfolioModule),
+        },
+        {
+          path: 'resume',
+          loadChildren: () => import('./resume/resume.module').then(m => m.ResumeModule),
+        },
+        {
+          path: 'contact',
+          loadChildren: () => import('./contact/contact.module').then(m => m.ContactModule),
         },
         ...LAYOUT_ROUTES,
       ],
