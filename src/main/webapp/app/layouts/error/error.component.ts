@@ -6,6 +6,17 @@ import { TranslateService } from '@ngx-translate/core';
 @Component({
   selector: 'jhi-error',
   templateUrl: './error.component.html',
+  styles: [
+    `
+      .error {
+        display: inline-block;
+        width: 500px;
+        height: 250px;
+        background: url('../../../content/images/emergency.jpg') no-repeat center top;
+        background-size: contain;
+      }
+    `,
+  ],
 })
 export class ErrorComponent implements OnInit, OnDestroy {
   errorMessage?: string;

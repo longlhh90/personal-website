@@ -1,8 +1,8 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { IMe } from 'app/entities/me/me.model';
 import { MeService } from 'app/entities/me/service/me.service';
-import { Observable, Subscription } from 'rxjs';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'jhi-portfolio',

@@ -1,15 +1,12 @@
-<div>
+<div style="margin-top: 150px">
   <div class="row">
-    <div class="col-md-4">
-      <span class="hipster img-fluid rounded"></span>
-    </div>
-
-    <div class="col-md-8">
+    <div style="display: flex; flex-direction: column; padding: auto; justify-content: center; align-items: center">
       <h1 jhiTranslate="error.title">Error Page!</h1>
 
       <div *ngIf="errorMessage">
         <div class="alert alert-danger">{{ errorMessage }}</div>
       </div>
+      <span class="error img-fluid rounded"></span>
     </div>
   </div>
 </div>
