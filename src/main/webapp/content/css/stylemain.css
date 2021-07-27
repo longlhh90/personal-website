@@ -11,6 +11,11 @@ section {
   opacity: 0;
   transition: ease-in-out 0.4s;
   z-index: 2;
+  background: url(../images/cube2.jpg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }
 
 section.section-show {
