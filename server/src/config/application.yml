@@ -43,19 +43,19 @@ eureka:
 
 jhipster:
   clientApp:
-    name: 'personal_website'
+    name: "personal_website"
   registry:
     password: admin
   security:
     authentication:
       jwt:
         # This token must be encoded using Base64 and be at least 256 bits long (you can type `openssl rand -base64 64` on your command line to generate a 512 bits one)
-        base64-secret: NDhjNjk1NTM3NWRlNjc1NDMwZjllNWFiMmVlYjQ4NzViYzY4MmY5ZWY2MzZhMzNiMTYxYmNlYjJkMWYwNDk0NDBlNDYwZThjMmFmNzAyNTQyOWYxMDhkM2QxYTQ3ZDFjM2I5YWU4YWVjOGRhNDc3MWE5OTExMzUyMjI3MDlmZWM=
+        base64-secret: WTMkW3ucu9CQgD9K+EjA1NCRciHVcrvprEj9l2by0/o8WPsFfl5XhDjXnirsUZwB5T4z8bB1GLPvTLsxYezkyBLPodgIca935GABMJYw1FpR+Zw7jH/6DMetNEvPupaWJkGJPhAKfk9ivF2FTDpJt2kNx+MSdnrZM2vlYR1QQPBHNlfCrXQ7kxo4bNCthuYzk72TlSnbrGRX83E0XFDThVucgcJ5ot2wRQ9hIe9GeRKm3EOyql4LEEpmC5xZ1vQK/fNj6mPpiyBGqdNVK4l+z5VVI206d6VYZ0LLHqJlyn0Y2hNHf5WZvA4A53YFGhmrBuYSya+ffsDPyF7r+ReeLg==
         # Token is valid 24 hours
         token-validity-in-seconds: 86400
         token-validity-in-seconds-for-remember-me: 2592000
   mail:
-    from: personal_website@localhost
+    from: longlhh90@gmail.com
   swagger:
     default-include-pattern: /api/.*
     title: personal_website API

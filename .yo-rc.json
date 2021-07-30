@@ -39,7 +39,7 @@
     "enableTranslation": true,
     "nativeLanguage": "en",
     "packageFolder": "com/jhipster/node",
-    "jwtSecretKey": "OGRjNDQwZmE0ZWM5YWUwMDI5NGZmNDBmZWE0MzlmNmE5MTQ3NmI3ODBlOTA0ZWU0MzhkOTQwYzMxYTQwYmQ1ZmNkNjc2NWM5M2VlYzY0NWEyZmI0MjBhY2UyMmU0NDk4YzZmM2UyMDE0ZDNlMDNiNWM4ZjYxNDY0YzEwZDJlNWU=",
+    "jwtSecretKey": "WTMkW3ucu9CQgD9K+EjA1NCRciHVcrvprEj9l2by0/o8WPsFfl5XhDjXnirsUZwB5T4z8bB1GLPvTLsxYezkyBLPodgIca935GABMJYw1FpR+Zw7jH/6DMetNEvPupaWJkGJPhAKfk9ivF2FTDpJt2kNx+MSdnrZM2vlYR1QQPBHNlfCrXQ7kxo4bNCthuYzk72TlSnbrGRX83E0XFDThVucgcJ5ot2wRQ9hIe9GeRKm3EOyql4LEEpmC5xZ1vQK/fNj6mPpiyBGqdNVK4l+z5VVI206d6VYZ0LLHqJlyn0Y2hNHf5WZvA4A53YFGhmrBuYSya+ffsDPyF7r+ReeLg==",
     "serviceDiscoveryType": false,
     "websocket": false,
     "searchEngine": false,
@@ -51,6 +51,9 @@
     "enableHibernateCache": true,
     "reactive": false,
     "entities": ["Me", "Education", "Working", "Project"],
-    "lastLiquibaseTimestamp": 1627161835000
+    "lastLiquibaseTimestamp": 1627161835000,
+    "herokuAppName": "lukas-site",
+    "herokuDeployType": "git",
+    "herokuJavaVersion": "11"
   }
 }
