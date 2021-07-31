@@ -1,18 +1,20 @@
+import { HttpResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { IMe } from 'app/entities/me/me.model';
-import { MeService } from 'app/entities/me/service/me.service';
-import { Observable } from 'rxjs';
+import { IExperience } from 'app/entities/experience/experience.model';
+import { ExperienceService } from 'app/entities/experience/service/experience.service';
 
 interface Resume {
   title?: string;
   major?: string;
-  startTime: string;
-  endTime: string;
+  startTime?: string;
+  endTime?: string;
   organization: string;
   location: string;
   details: string[];
 }
+
+const mappingMonth = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
 @Component({
   selector: 'jhi-resume',
@@ -20,12 +22,13 @@ interface Resume {
   styleUrls: ['./resume.component.scss'],
 })
 export class ResumeComponent implements OnInit {
-  meInfo$: Observable<IMe[] | null> | undefined;
+  experiences?: IExperience[];
+  isLoading = false;
   list_experience: Resume[] = [];
   list_education: Resume[] = [];
   list_certificate: Resume[] = [];
 
-  constructor(private meService: MeService, private router: Router) {
+  constructor(protected experienceService: ExperienceService, private router: Router) {
     this.list_experience = [
       {
         title: 'Software Developer',
@@ -55,7 +58,7 @@ export class ResumeComponent implements OnInit {
         title: 'IT Business Analyst',
         startTime: 'May 2019',
         endTime: 'Oct 2019',
-        organization: 'Vietnam Payment Solution Company (VNPAY), Vietnam',
+        organization: 'Vietnam Payment Solution Company (VNPAY)',
         location: 'Hanoi, Vietnam',
         details: [
           'Worked on-site with client to analyze needs across sales, customer service, administrative, and IT departments.',
@@ -67,7 +70,7 @@ export class ResumeComponent implements OnInit {
         title: 'Product Owner',
         startTime: 'May 2018',
         endTime: 'Apr 2019',
-        organization: 'TrueMoney, Vietnam',
+        organization: 'TrueMoney',
         location: 'Hanoi, Vietnam',
         details: [
           'Analyzed data reports based on event tracking and data collected from Business Intelligent team to find out the critical issue of both system and business procedures. After that, propose detail actions to improve the Product',
@@ -78,7 +81,7 @@ export class ResumeComponent implements OnInit {
         title: 'IT Business Analyst',
         startTime: 'Mar 2015',
         endTime: 'Feb 2018',
-        organization: 'Synergix Technologies Pte Ltd, Vietnam',
+        organization: 'Synergix Technologies Pte Ltd',
         location: 'Hanoi, Vietnam',
         details: [
           'Coordinated with a 5-person team and successfully redesigned a Cost Project Management module in an ERP product used by one of the top 10 construction companies in Singapore',
@@ -106,7 +109,39 @@ export class ResumeComponent implements OnInit {
     ];
   }
 
+  loadAll(): void {
+    this.isLoading = true;
+
+    this.experienceService.query().subscribe(
+      (res: HttpResponse<IExperience[]>) => {
+        this.isLoading = false;
+        this.experiences = res.body ?? [];
+
+        for (const i of this.experiences) {
+          if (i.expType === 'work') {
+            const startMonth = i.startMonth ? i.startMonth : null;
+            const endMonth = i.endMonth ? i.endMonth : null;
+            this.list_experience = [
+              {
+                title: i.title ? i.title : '',
+                startTime: `${startMonth ? mappingMonth[startMonth - 1] : ''} ${i.startYear ? i.startYear : ''}`,
+                endTime: i.isPresent ? 'Now' : `${endMonth ? mappingMonth[endMonth - 1] : ''} ${i.endYear ? i.endYear : ''}`,
+                organization: i.organization ? i.organization : '',
+                location: i.location ? i.location : '',
+                details: i.details ? i.details.split('|') : [],
+              },
+              ...this.list_experience,
+            ];
+          }
+        }
+      },
+      () => {
+        this.isLoading = false;
+      }
+    );
+  }
+
   ngOnInit(): void {
-    this.meInfo$ = this.meService.query();
+    this.loadAll();
   }
 }
