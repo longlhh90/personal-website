@@ -32,11 +32,11 @@ export class MeUpdatePage {
   idInput = element(by.id('field_id'));
   formalNameInput = element(by.id('field_formalName'));
   legalNameInput = element(by.id('field_legalName'));
-  dobInput = element(by.id('field_dob'));
   emailInput = element(by.id('field_email'));
   linkedinInput = element(by.id('field_linkedin'));
   facebookInput = element(by.id('field_facebook'));
   instagramInput = element(by.id('field_instagram'));
+  githubInput = element(by.id('field_github'));
   resumeInput = element(by.id('field_resume'));
   aboutMeInput = element(by.id('field_aboutMe'));
   aboutMeShortInput = element(by.id('field_aboutMeShort'));
@@ -69,14 +69,6 @@ export class MeUpdatePage {
     return await this.legalNameInput.getAttribute('value');
   }
 
-  async setDobInput(dob: string): Promise<void> {
-    await this.dobInput.sendKeys(dob);
-  }
-
-  async getDobInput(): Promise<string> {
-    return await this.dobInput.getAttribute('value');
-  }
-
   async setEmailInput(email: string): Promise<void> {
     await this.emailInput.sendKeys(email);
   }
@@ -107,6 +99,14 @@ export class MeUpdatePage {
 
   async getInstagramInput(): Promise<string> {
     return await this.instagramInput.getAttribute('value');
+  }
+
+  async setGithubInput(github: string): Promise<void> {
+    await this.githubInput.sendKeys(github);
+  }
+
+  async getGithubInput(): Promise<string> {
+    return await this.githubInput.getAttribute('value');
   }
 
   async setResumeInput(resume: string): Promise<void> {

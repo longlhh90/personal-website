@@ -45,11 +45,11 @@ describe('Me e2e test', () => {
     await promise.all([
       meUpdatePage.setFormalNameInput('formalName'),
       meUpdatePage.setLegalNameInput('legalName'),
-      meUpdatePage.setDobInput('2000-12-31'),
       meUpdatePage.setEmailInput('email'),
       meUpdatePage.setLinkedinInput('linkedin'),
       meUpdatePage.setFacebookInput('facebook'),
       meUpdatePage.setInstagramInput('instagram'),
+      meUpdatePage.setGithubInput('github'),
       meUpdatePage.setResumeInput('resume'),
       meUpdatePage.setAboutMeInput('aboutMe'),
       meUpdatePage.setAboutMeShortInput('aboutMeShort'),
@@ -57,11 +57,11 @@ describe('Me e2e test', () => {
 
     expect(await meUpdatePage.getFormalNameInput()).to.eq('formalName', 'Expected FormalName value to be equals to formalName');
     expect(await meUpdatePage.getLegalNameInput()).to.eq('legalName', 'Expected LegalName value to be equals to legalName');
-    expect(await meUpdatePage.getDobInput()).to.eq('2000-12-31', 'Expected dob value to be equals to 2000-12-31');
     expect(await meUpdatePage.getEmailInput()).to.eq('email', 'Expected Email value to be equals to email');
     expect(await meUpdatePage.getLinkedinInput()).to.eq('linkedin', 'Expected Linkedin value to be equals to linkedin');
     expect(await meUpdatePage.getFacebookInput()).to.eq('facebook', 'Expected Facebook value to be equals to facebook');
     expect(await meUpdatePage.getInstagramInput()).to.eq('instagram', 'Expected Instagram value to be equals to instagram');
+    expect(await meUpdatePage.getGithubInput()).to.eq('github', 'Expected Github value to be equals to github');
     expect(await meUpdatePage.getResumeInput()).to.eq('resume', 'Expected Resume value to be equals to resume');
     expect(await meUpdatePage.getAboutMeInput()).to.eq('aboutMe', 'Expected AboutMe value to be equals to aboutMe');
     expect(await meUpdatePage.getAboutMeShortInput()).to.eq('aboutMeShort', 'Expected AboutMeShort value to be equals to aboutMeShort');
