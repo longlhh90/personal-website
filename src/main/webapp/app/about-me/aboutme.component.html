@@ -13,14 +13,10 @@
       </div>
       <div class="col-lg-8 pt-4 pt-lg-0 content" data-aos="fade-left">
         <h3>Software Developer</h3>
-        <p class="fst-italic">Hi there, my name is Lukas. The below is full detail about my self.</p>
+        <div [innerHTML]="me?.aboutMeShort"></div>
         <div class="row">
           <div class="col-lg-6">
             <ul>
-              <li>
-                <i class="bi bi-chevron-right"></i> <strong>Website:</strong>
-                <span><a href="www.longlhh.ca" target="_blank" rel="noopener noreferrer">www.longlhh.ca</a></span>
-              </li>
               <li><i class="bi bi-chevron-right"></i> <strong>Phone:</strong> <span>+1 306 xxx xxxx</span></li>
               <li><i class="bi bi-chevron-right"></i> <strong>City:</strong> <span>Saskatoon, SK, Canada</span></li>
             </ul>
@@ -29,7 +25,9 @@
             <ul>
               <li>
                 <i class="bi bi-chevron-right"></i> <strong>Email:</strong>
-                <span><a href="mailto:longlhh90@gmail.com">longlhh90@gmail.com</a></span>
+                <span
+                  ><a href="mailto:{{ me?.email }}">{{ me?.email }}</a></span
+                >
               </li>
               <li><i class="bi bi-chevron-right"></i> <strong>Freelance:</strong> <span>Available</span></li>
             </ul>
@@ -39,14 +37,7 @@
           I've been working in IT for {{ time }} years and have been through most of positions in IT department (Tester, Developer, Product
           Owner).
         </p>
-        <p>
-          I am proficient in Python (Django + Flask frame work) and JavaScript (Angular, React for FE and ExpressJs for BE) but I am
-          confident to pick up anything to learn and use fast.
-        </p>
-        <p>
-          As a diligent, proactive person with a great sense of responsibility, and who knows what should be done to achieve the final goals
-          I am sure that I can be an asset.
-        </p>
+        <div [innerHTML]="me?.aboutMe"></div>
       </div>
     </div>
   </div>

@@ -1,8 +1,8 @@
-import { Component, OnInit, OnDestroy, ViewChildren, QueryList, ElementRef } from '@angular/core';
+import { HttpResponse } from '@angular/common/http';
+import { Component, OnInit, ViewChildren, QueryList, ElementRef, AfterViewInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { IMe } from 'app/entities/me/me.model';
 import { MeService } from 'app/entities/me/service/me.service';
-import { Observable, Subscription } from 'rxjs';
 
 interface Abilities {
   name: string;
@@ -21,8 +21,10 @@ interface Interest {
   templateUrl: './aboutme.component.html',
   styleUrls: ['./aboutme.component.scss'],
 })
-export class AboutMeComponent implements OnInit {
-  meInfo$: Observable<IMe[] | null> | undefined;
+export class AboutMeComponent implements OnInit, AfterViewInit {
+  us?: IMe[];
+  me?: IMe;
+  isLoading = false;
   list_highlights: Abilities[] = [];
   list_skills_fe: Abilities[] = [];
   list_skills_be: Abilities[] = [];
@@ -40,6 +42,7 @@ export class AboutMeComponent implements OnInit {
     this.time = Math.floor(Math.abs(date1.getTime() - date2.getTime()) / (36e5 * 24 * 365));
 
     //the css is handling 4 items highlight only
+
     this.list_highlights = [
       { name: 'Great Attitude', value: 10, icon: 'bi bi-emoji-smile' },
       { name: 'Languagues', value: 2, icon: 'bi bi-translate' },
@@ -48,6 +51,7 @@ export class AboutMeComponent implements OnInit {
     ];
 
     //the css is handling 6 items skill only
+
     this.list_skills_fe = [
       { name: 'Javascript', value: 90, icon: 'fab fa-js-square' },
       { name: 'HTML', value: 80, icon: 'fab fa-html5' },
@@ -97,8 +101,23 @@ export class AboutMeComponent implements OnInit {
     }
   }
 
+  loadAll(): void {
+    this.isLoading = true;
+
+    this.meService.query().subscribe(
+      (res: HttpResponse<IMe[]>) => {
+        this.isLoading = false;
+        this.us = res.body ?? [];
+        this.me = this.us[0];
+      },
+      () => {
+        this.isLoading = false;
+      }
+    );
+  }
+
   ngOnInit(): void {
-    this.meInfo$ = this.meService.query();
+    this.loadAll();
   }
 
   animateValueProgressBar(obj: any, start: number, end: number, duration: number): void {
