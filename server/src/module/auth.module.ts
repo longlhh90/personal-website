@@ -26,4 +26,4 @@ import { AccountController } from '../web/rest/account.controller';
     providers: [AuthService, JwtStrategy],
     exports: [AuthService],
 })
-export class AuthModule { }
+export class AuthModule {}

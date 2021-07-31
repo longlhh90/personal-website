@@ -44,7 +44,6 @@ export class PublicUserController {
         isArray: true,
     })
     getAuthorities(@Req() req: any): any {
-        return
         const user: any = req.user;
         if (!user) {
             return [];

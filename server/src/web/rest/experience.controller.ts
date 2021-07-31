@@ -13,31 +13,31 @@ import {
 } from '@nestjs/common';
 import { ApiBearerAuth, ApiUseTags, ApiResponse, ApiOperation } from '@nestjs/swagger';
 import { Request } from 'express';
-import { MeDTO } from '../../service/dto/me.dto';
-import { MeService } from '../../service/me.service';
+import { ExperienceDTO } from '../../service/dto/experience.dto';
+import { ExperienceService } from '../../service/experience.service';
 import { PageRequest, Page } from '../../domain/base/pagination.entity';
 import { AuthGuard, Roles, RolesGuard, RoleType } from '../../security';
 import { HeaderUtil } from '../../client/header-util';
 import { LoggingInterceptor } from '../../client/interceptors/logging.interceptor';
 
-@Controller('api/us')
+@Controller('api/experiences')
 @UseInterceptors(LoggingInterceptor)
 @ApiBearerAuth()
-@ApiUseTags('us')
-export class MeController {
-    logger = new Logger('MeController');
+@ApiUseTags('experiences')
+export class ExperienceController {
+    logger = new Logger('ExperienceController');
 
-    constructor(private readonly meService: MeService) { }
+    constructor(private readonly experienceService: ExperienceService) { }
 
     @Get('/')
     @ApiResponse({
         status: 200,
         description: 'List all records',
-        type: MeDTO,
+        type: ExperienceDTO,
     })
-    async getAll(@Req() req: Request): Promise<MeDTO[]> {
+    async getAll(@Req() req: Request): Promise<ExperienceDTO[]> {
         const pageRequest: PageRequest = new PageRequest(req.query.page, req.query.size, req.query.sort);
-        const [results, count] = await this.meService.findAndCount({
+        const [results, count] = await this.experienceService.findAndCount({
             skip: +pageRequest.page * pageRequest.size,
             take: +pageRequest.size,
             order: pageRequest.sort.asOrder(),
@@ -50,66 +50,66 @@ export class MeController {
     @ApiResponse({
         status: 200,
         description: 'The found record',
-        type: MeDTO,
+        type: ExperienceDTO,
     })
-    async getOne(@Param('id') id: string): Promise<MeDTO> {
-        return await this.meService.findById(id);
+    async getOne(@Param('id') id: string): Promise<ExperienceDTO> {
+        return await this.experienceService.findById(id);
     }
 
     @PostMethod('/')
     @UseGuards(AuthGuard, RolesGuard)
     @Roles(RoleType.ADMIN)
-    @ApiOperation({ title: 'Create me' })
+    @ApiOperation({ title: 'Create experience' })
     @ApiResponse({
         status: 201,
         description: 'The record has been successfully created.',
-        type: MeDTO,
+        type: ExperienceDTO,
     })
     @ApiResponse({ status: 403, description: 'Forbidden.' })
-    async post(@Req() req: Request, @Body() meDTO: MeDTO): Promise<MeDTO> {
-        const created = await this.meService.save(meDTO);
-        HeaderUtil.addEntityCreatedHeaders(req.res, 'Me', created.id);
+    async post(@Req() req: Request, @Body() experienceDTO: ExperienceDTO): Promise<ExperienceDTO> {
+        const created = await this.experienceService.save(experienceDTO);
+        HeaderUtil.addEntityCreatedHeaders(req.res, 'Experience', created.id);
         return created;
     }
 
     @Put('/')
     @UseGuards(AuthGuard, RolesGuard)
     @Roles(RoleType.ADMIN)
-    @ApiOperation({ title: 'Update me' })
+    @ApiOperation({ title: 'Update experience' })
     @ApiResponse({
         status: 200,
         description: 'The record has been successfully updated.',
-        type: MeDTO,
+        type: ExperienceDTO,
     })
-    async put(@Req() req: Request, @Body() meDTO: MeDTO): Promise<MeDTO> {
-        HeaderUtil.addEntityCreatedHeaders(req.res, 'Me', meDTO.id);
-        return await this.meService.update(meDTO);
+    async put(@Req() req: Request, @Body() experienceDTO: ExperienceDTO): Promise<ExperienceDTO> {
+        HeaderUtil.addEntityCreatedHeaders(req.res, 'Experience', experienceDTO.id);
+        return await this.experienceService.update(experienceDTO);
     }
 
     @Put('/:id')
     @UseGuards(AuthGuard, RolesGuard)
     @Roles(RoleType.ADMIN)
-    @ApiOperation({ title: 'Update me with id' })
+    @ApiOperation({ title: 'Update experience with id' })
     @ApiResponse({
         status: 200,
         description: 'The record has been successfully updated.',
-        type: MeDTO,
+        type: ExperienceDTO,
     })
-    async putId(@Req() req: Request, @Body() meDTO: MeDTO): Promise<MeDTO> {
-        HeaderUtil.addEntityCreatedHeaders(req.res, 'Me', meDTO.id);
-        return await this.meService.update(meDTO);
+    async putId(@Req() req: Request, @Body() experienceDTO: ExperienceDTO): Promise<ExperienceDTO> {
+        HeaderUtil.addEntityCreatedHeaders(req.res, 'Experience', experienceDTO.id);
+        return await this.experienceService.update(experienceDTO);
     }
 
     @Delete('/:id')
     @UseGuards(AuthGuard, RolesGuard)
     @Roles(RoleType.ADMIN)
-    @ApiOperation({ title: 'Delete me' })
+    @ApiOperation({ title: 'Delete experience' })
     @ApiResponse({
         status: 204,
         description: 'The record has been successfully deleted.',
     })
     async deleteById(@Req() req: Request, @Param('id') id: string): Promise<void> {
-        HeaderUtil.addEntityDeletedHeaders(req.res, 'Me', id);
-        return await this.meService.deleteById(id);
+        HeaderUtil.addEntityDeletedHeaders(req.res, 'Experience', id);
+        return await this.experienceService.deleteById(id);
     }
 }

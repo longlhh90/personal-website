@@ -64,6 +64,12 @@ export class AccountController {
     async getAccount(@Req() req: Request): Promise<any> {
         const user: any = req.user;
         const userProfileFound = await this.authService.getAccount(user.id);
+        if (userProfileFound && !userProfileFound.firstName) {
+            userProfileFound.firstName = '';
+        }
+        if (userProfileFound && !userProfileFound.lastName) {
+            userProfileFound.lastName = '';
+        }
         return userProfileFound;
     }
 

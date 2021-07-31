@@ -1,7 +1,7 @@
-import { PrimaryGeneratedColumn, Column } from 'typeorm';
+import { ObjectIdColumn, Column } from 'typeorm';
 
 export abstract class BaseEntity {
-    @PrimaryGeneratedColumn('uuid')
+    @ObjectIdColumn({ name: '_id' })
     id?: string;
 
     @Column({ nullable: true })

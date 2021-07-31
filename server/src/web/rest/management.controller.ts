@@ -16,6 +16,12 @@ export class ManagementController {
         description: 'Check if the microservice is up',
     })
     info(): any {
+        if (process.env.BACKEND_ENV === 'prod') {
+            return {
+                activeProfiles: 'prod',
+                'display-ribbon-on-profiles': 'prod',
+            }
+        }
         return {
             activeProfiles: 'dev',
             'display-ribbon-on-profiles': 'dev',

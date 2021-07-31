@@ -15,9 +15,6 @@ export class MeDTO extends BaseDTO {
     @ApiModelProperty({ description: 'legalName field' })
     legalName: string;
 
-    @ApiModelProperty({ description: 'dob field', required: false })
-    dob: any;
-
     @IsNotEmpty()
     @ApiModelProperty({ description: 'email field' })
     email: string;
@@ -30,6 +27,9 @@ export class MeDTO extends BaseDTO {
 
     @ApiModelProperty({ description: 'instagram field', required: false })
     instagram: string;
+
+    @ApiModelProperty({ description: 'github field', required: false })
+    github: string;
 
     @ApiModelProperty({ description: 'resume field', required: false })
     resume: string;

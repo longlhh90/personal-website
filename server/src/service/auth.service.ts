@@ -48,7 +48,7 @@ export class AuthService {
     }
 
     async findUserWithAuthById(userId: string): Promise<UserDTO | undefined> {
-        const userDTO: UserDTO = await this.userService.findByfields({ where: { id: userId } });
+        const userDTO: UserDTO = await this.userService.findById(userId);
         return userDTO;
     }
 

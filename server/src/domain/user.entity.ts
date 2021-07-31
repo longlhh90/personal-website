@@ -1,5 +1,5 @@
 import { Authority } from './authority.entity';
-import { Entity, Column, ManyToMany, JoinTable } from 'typeorm';
+import { Entity, Column } from 'typeorm';
 import { BaseEntity } from './base/base.entity';
 import { config } from '../config';
 import { EncryptionTransformer } from 'typeorm-encrypted';
@@ -19,9 +19,8 @@ export class User extends BaseEntity {
     @Column({ default: 'en' })
     langKey?: string;
 
-    @ManyToMany(() => Authority)
-    @JoinTable()
-    authorities?: any[];
+    @Column()
+    authorities?: Authority[];
 
     @Column({
         type: 'varchar',

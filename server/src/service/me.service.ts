@@ -11,7 +11,7 @@ const relationshipNames = [];
 export class MeService {
     logger = new Logger('MeService');
 
-    constructor(@InjectRepository(MeRepository) private meRepository: MeRepository) {}
+    constructor(@InjectRepository(MeRepository) private meRepository: MeRepository) { }
 
     async findById(id: string): Promise<MeDTO | undefined> {
         const options = { relations: relationshipNames };
@@ -26,7 +26,8 @@ export class MeService {
 
     async findAndCount(options: FindManyOptions<MeDTO>): Promise<[MeDTO[], number]> {
         options.relations = relationshipNames;
-        const resultList = await this.meRepository.findAndCount(options);
+        const resultList = await this.meRepository.findAndCount();
+        console.log(resultList);
         const meDTO: MeDTO[] = [];
         if (resultList && resultList[0]) {
             resultList[0].forEach((me) => meDTO.push(MeMapper.fromEntityToDTO(me)));
@@ -43,8 +44,8 @@ export class MeService {
 
     async update(meDTO: MeDTO): Promise<MeDTO | undefined> {
         const entity = MeMapper.fromDTOtoEntity(meDTO);
-        const result = await this.meRepository.save(entity);
-        return MeMapper.fromEntityToDTO(result);
+        await this.meRepository.update(entity.id, entity);
+        return meDTO;
     }
 
     async deleteById(id: string): Promise<void | undefined> {
