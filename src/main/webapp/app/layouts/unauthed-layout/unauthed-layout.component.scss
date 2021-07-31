@@ -2,3 +2,36 @@
   padding-left: 0;
   padding-right: 0;
 }
+
+/*--------------------------------------------------------------
+# Credits
+--------------------------------------------------------------*/
+
+.credits {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  padding: 15px;
+  text-align: right;
+  font-size: 13px;
+  color: #fff;
+  z-index: 3;
+  opacity: 10%;
+}
+
+@media (max-width: 992px) {
+  .credits {
+    text-align: center;
+    padding: 10px;
+    background: rgba(0, 0, 0, 0.8);
+  }
+}
+
+.credits a {
+  color: #18d26e;
+  transition: 0.3s;
+}
+
+.credits a:hover {
+  color: #fff;
+}
