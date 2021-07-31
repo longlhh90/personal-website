@@ -4,8 +4,6 @@ import { Subscription } from 'rxjs';
 
 import { AccountService } from 'app/core/auth/account.service';
 import { Account } from 'app/core/auth/account.model';
-import { MeService } from 'app/entities/me/service/me.service';
-import { IMe } from 'app/entities/me/me.model';
 
 @Component({
   selector: 'jhi-home',
@@ -15,13 +13,11 @@ import { IMe } from 'app/entities/me/me.model';
 export class HomeComponent implements OnInit, OnDestroy {
   account: Account | null = null;
   authSubscription?: Subscription;
-  meInfo: IMe | null = null;
 
-  constructor(private accountService: AccountService, private meService: MeService, private router: Router) {}
+  constructor(private accountService: AccountService, private router: Router) {}
 
   ngOnInit(): void {
     this.authSubscription = this.accountService.getAuthenticationState().subscribe(account => (this.account = account));
-    this.meService.query().subscribe(value => (this.meInfo = value ? value[0] : null));
   }
 
   isAuthenticated(): boolean {
