@@ -37,7 +37,7 @@ describe('Component Tests', () => {
 
     describe('ngOnInit', () => {
       it('Should update editForm', () => {
-        const me: IMe = { id: 456 };
+        const me: IMe = { id: 'CBA' };
 
         activatedRoute.data = of({ me });
         comp.ngOnInit();
@@ -50,7 +50,7 @@ describe('Component Tests', () => {
       it('Should call update service on save for existing entity', () => {
         // GIVEN
         const saveSubject = new Subject();
-        const me = { id: 123 };
+        const me = { id: 'ABC' };
         spyOn(meService, 'update').and.returnValue(saveSubject);
         spyOn(comp, 'previousState');
         activatedRoute.data = of({ me });
@@ -92,7 +92,7 @@ describe('Component Tests', () => {
       it('Should set isSaving to false on error', () => {
         // GIVEN
         const saveSubject = new Subject();
-        const me = { id: 123 };
+        const me = { id: 'ABC' };
         spyOn(meService, 'update').and.returnValue(saveSubject);
         spyOn(comp, 'previousState');
         activatedRoute.data = of({ me });

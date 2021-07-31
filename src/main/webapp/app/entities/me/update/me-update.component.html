@@ -10,7 +10,7 @@
 
         <div class="form-group" [hidden]="editForm.get('id')!.value == null">
           <label class="form-control-label" jhiTranslate="global.field.id" for="field_id">ID</label>
-          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+          <input type="text" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
         </div>
 
         <div class="form-group">
@@ -49,25 +49,6 @@
         </div>
 
         <div class="form-group">
-          <label class="form-control-label" jhiTranslate="personalWebsiteApp.me.dob" for="field_dob">Dob</label>
-          <div class="input-group">
-            <input
-              id="field_dob"
-              data-cy="dob"
-              type="text"
-              class="form-control"
-              name="dob"
-              ngbDatepicker
-              #dobDp="ngbDatepicker"
-              formControlName="dob"
-            />
-            <span class="input-group-append">
-              <button type="button" class="btn btn-secondary" (click)="dobDp.toggle()"><fa-icon icon="calendar-alt"></fa-icon></button>
-            </span>
-          </div>
-        </div>
-
-        <div class="form-group">
           <label class="form-control-label" jhiTranslate="personalWebsiteApp.me.email" for="field_email">Email</label>
           <input type="text" class="form-control" name="email" id="field_email" data-cy="email" formControlName="email" />
           <div *ngIf="editForm.get('email')!.invalid && (editForm.get('email')!.dirty || editForm.get('email')!.touched)">
@@ -90,6 +71,11 @@
         <div class="form-group">
           <label class="form-control-label" jhiTranslate="personalWebsiteApp.me.instagram" for="field_instagram">Instagram</label>
           <input type="text" class="form-control" name="instagram" id="field_instagram" data-cy="instagram" formControlName="instagram" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="personalWebsiteApp.me.github" for="field_github">Github</label>
+          <input type="text" class="form-control" name="github" id="field_github" data-cy="github" formControlName="github" />
         </div>
 
         <div class="form-group">

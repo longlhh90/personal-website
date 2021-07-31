@@ -1,14 +1,12 @@
-import * as dayjs from 'dayjs';
-
 export interface IMe {
-  id?: number;
+  id?: string;
   formalName?: string;
   legalName?: string;
-  dob?: dayjs.Dayjs | null;
   email?: string;
   linkedin?: string | null;
   facebook?: string | null;
   instagram?: string | null;
+  github?: string | null;
   resume?: string | null;
   aboutMe?: string;
   aboutMeShort?: string;
@@ -16,20 +14,20 @@ export interface IMe {
 
 export class Me implements IMe {
   constructor(
-    public id?: number,
+    public id?: string,
     public formalName?: string,
     public legalName?: string,
-    public dob?: dayjs.Dayjs | null,
     public email?: string,
     public linkedin?: string | null,
     public facebook?: string | null,
     public instagram?: string | null,
+    public github?: string | null,
     public resume?: string | null,
     public aboutMe?: string,
     public aboutMeShort?: string
   ) {}
 }
 
-export function getMeIdentifier(me: IMe): number | undefined {
+export function getMeIdentifier(me: IMe): string | undefined {
   return me.id;
 }

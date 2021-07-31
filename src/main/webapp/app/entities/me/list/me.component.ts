@@ -21,9 +21,9 @@ export class MeComponent implements OnInit {
     this.isLoading = true;
 
     this.meService.query().subscribe(
-      (res: IMe[] | null) => {
+      (res: HttpResponse<IMe[]>) => {
         this.isLoading = false;
-        this.us = res ?? [];
+        this.us = res.body ?? [];
       },
       () => {
         this.isLoading = false;
@@ -35,7 +35,7 @@ export class MeComponent implements OnInit {
     this.loadAll();
   }
 
-  trackId(index: number, item: IMe): number {
+  trackId(index: number, item: IMe): string {
     return item.id!;
   }
 
