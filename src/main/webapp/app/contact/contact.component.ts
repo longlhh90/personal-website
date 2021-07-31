@@ -1,8 +1,5 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { IMe } from 'app/entities/me/me.model';
-import { MeService } from 'app/entities/me/service/me.service';
-import { Observable, Subscription } from 'rxjs';
 
 @Component({
   selector: 'jhi-contact',
@@ -10,11 +7,9 @@ import { Observable, Subscription } from 'rxjs';
   styleUrls: ['./contact.component.scss'],
 })
 export class ContactComponent implements OnInit {
-  meInfo$: Observable<IMe[] | null> | undefined;
-
-  constructor(private meService: MeService, private router: Router) {}
+  constructor(private router: Router) {}
 
   ngOnInit(): void {
-    this.meInfo$ = this.meService.query();
+    const test = null;
   }
 }
