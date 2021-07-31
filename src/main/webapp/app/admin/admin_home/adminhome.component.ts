@@ -4,8 +4,6 @@ import { Subscription } from 'rxjs';
 
 import { AccountService } from 'app/core/auth/account.service';
 import { Account } from 'app/core/auth/account.model';
-import { MeService } from 'app/entities/me/service/me.service';
-import { IMe } from 'app/entities/me/me.model';
 
 @Component({
   selector: 'jhi-admin-home',
@@ -16,7 +14,7 @@ export class AdminHomeComponent implements OnInit, OnDestroy {
   account: Account | null = null;
   authSubscription?: Subscription;
 
-  constructor(private accountService: AccountService, private meService: MeService, private router: Router) {}
+  constructor(private accountService: AccountService, private router: Router) {}
 
   ngOnInit(): void {
     this.authSubscription = this.accountService.getAuthenticationState().subscribe(account => (this.account = account));
