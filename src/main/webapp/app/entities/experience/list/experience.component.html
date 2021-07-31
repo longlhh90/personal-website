@@ -1,0 +1,98 @@
+<div>
+  <h2 id="page-heading" data-cy="ExperienceHeading">
+    <span jhiTranslate="personalWebsiteApp.experience.home.title">Experiences</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info mr-2" (click)="loadAll()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="personalWebsiteApp.experience.home.refreshListLabel">Refresh List</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-experience"
+        [routerLink]="['/experience/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="personalWebsiteApp.experience.home.createLabel"> Create a new Experience </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="experiences?.length === 0">
+    <span jhiTranslate="personalWebsiteApp.experience.home.notFound">No experiences found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="experiences && experiences.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr>
+          <th scope="col"><span jhiTranslate="global.field.id">ID</span></th>
+          <th scope="col"><span jhiTranslate="personalWebsiteApp.experience.title">Title</span></th>
+          <th scope="col"><span jhiTranslate="personalWebsiteApp.experience.major">Major</span></th>
+          <th scope="col"><span jhiTranslate="personalWebsiteApp.experience.organization">Organization</span></th>
+          <th scope="col"><span jhiTranslate="personalWebsiteApp.experience.location">Location</span></th>
+          <th scope="col"><span jhiTranslate="personalWebsiteApp.experience.startMonth">Start Month</span></th>
+          <th scope="col"><span jhiTranslate="personalWebsiteApp.experience.startYear">Start Year</span></th>
+          <th scope="col"><span jhiTranslate="personalWebsiteApp.experience.endMonth">End Month</span></th>
+          <th scope="col"><span jhiTranslate="personalWebsiteApp.experience.endYear">End Year</span></th>
+          <th scope="col"><span jhiTranslate="personalWebsiteApp.experience.isPresent">Is Present</span></th>
+          <th scope="col"><span jhiTranslate="personalWebsiteApp.experience.details">Details</span></th>
+          <th scope="col"><span jhiTranslate="personalWebsiteApp.experience.expType">Exp Type</span></th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let experience of experiences; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/experience', experience.id, 'view']">{{ experience.id }}</a>
+          </td>
+          <td>{{ experience.title }}</td>
+          <td>{{ experience.major }}</td>
+          <td>{{ experience.organization }}</td>
+          <td>{{ experience.location }}</td>
+          <td>{{ experience.startMonth }}</td>
+          <td>{{ experience.startYear }}</td>
+          <td>{{ experience.endMonth }}</td>
+          <td>{{ experience.endYear }}</td>
+          <td>{{ experience.isPresent }}</td>
+          <td>{{ experience.details }}</td>
+          <td>{{ experience.expType }}</td>
+          <td class="text-right">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/experience', experience.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/experience', experience.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(experience)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

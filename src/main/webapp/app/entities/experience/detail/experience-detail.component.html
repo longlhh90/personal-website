@@ -1,0 +1,72 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="experience">
+      <h2 data-cy="experienceDetailsHeading"><span jhiTranslate="personalWebsiteApp.experience.detail.title">Experience</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ experience.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="personalWebsiteApp.experience.title">Title</span></dt>
+        <dd>
+          <span>{{ experience.title }}</span>
+        </dd>
+        <dt><span jhiTranslate="personalWebsiteApp.experience.major">Major</span></dt>
+        <dd>
+          <span>{{ experience.major }}</span>
+        </dd>
+        <dt><span jhiTranslate="personalWebsiteApp.experience.organization">Organization</span></dt>
+        <dd>
+          <span>{{ experience.organization }}</span>
+        </dd>
+        <dt><span jhiTranslate="personalWebsiteApp.experience.location">Location</span></dt>
+        <dd>
+          <span>{{ experience.location }}</span>
+        </dd>
+        <dt><span jhiTranslate="personalWebsiteApp.experience.startMonth">Start Month</span></dt>
+        <dd>
+          <span>{{ experience.startMonth }}</span>
+        </dd>
+        <dt><span jhiTranslate="personalWebsiteApp.experience.startYear">Start Year</span></dt>
+        <dd>
+          <span>{{ experience.startYear }}</span>
+        </dd>
+        <dt><span jhiTranslate="personalWebsiteApp.experience.endMonth">End Month</span></dt>
+        <dd>
+          <span>{{ experience.endMonth }}</span>
+        </dd>
+        <dt><span jhiTranslate="personalWebsiteApp.experience.endYear">End Year</span></dt>
+        <dd>
+          <span>{{ experience.endYear }}</span>
+        </dd>
+        <dt><span jhiTranslate="personalWebsiteApp.experience.isPresent">Is Present</span></dt>
+        <dd>
+          <span>{{ experience.isPresent }}</span>
+        </dd>
+        <dt><span jhiTranslate="personalWebsiteApp.experience.details">Details</span></dt>
+        <dd>
+          <span>{{ experience.details }}</span>
+        </dd>
+        <dt><span jhiTranslate="personalWebsiteApp.experience.expType">Exp Type</span></dt>
+        <dd>
+          <span>{{ experience.expType }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/experience', experience.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>
