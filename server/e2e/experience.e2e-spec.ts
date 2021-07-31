@@ -4,10 +4,10 @@ import { AppModule } from '../src/app.module';
 import { INestApplication } from '@nestjs/common';
 import { AuthGuard } from '../src/security/guards/auth.guard';
 import { RolesGuard } from '../src/security/guards/roles.guard';
-import { WorkingDTO } from '../src/service/dto/working.dto';
-import { WorkingService } from '../src/service/working.service';
+import { ExperienceDTO } from '../src/service/dto/experience.dto';
+import { ExperienceService } from '../src/service/experience.service';
 
-describe('Working Controller', () => {
+describe('Experience Controller', () => {
     let app: INestApplication;
 
     const authGuardMock = { canActivate: (): any => true };
@@ -32,7 +32,7 @@ describe('Working Controller', () => {
             .useValue(authGuardMock)
             .overrideGuard(RolesGuard)
             .useValue(rolesGuardMock)
-            .overrideProvider(WorkingService)
+            .overrideProvider(ExperienceService)
             .useValue(serviceMock)
             .compile();
 
@@ -40,42 +40,43 @@ describe('Working Controller', () => {
         await app.init();
     });
 
-    it('/GET all workings ', async () => {
-        const getEntities: WorkingDTO[] = (await request(app.getHttpServer()).get('/api/workings').expect(200)).body;
+    it('/GET all experiences ', async () => {
+        const getEntities: ExperienceDTO[] = (await request(app.getHttpServer()).get('/api/experiences').expect(200))
+            .body;
 
         expect(getEntities).toEqual(entityMock);
     });
 
-    it('/GET workings by id', async () => {
-        const getEntity: WorkingDTO = (
+    it('/GET experiences by id', async () => {
+        const getEntity: ExperienceDTO = (
             await request(app.getHttpServer())
-                .get('/api/workings/' + entityMock.id)
+                .get('/api/experiences/' + entityMock.id)
                 .expect(200)
         ).body;
 
         expect(getEntity).toEqual(entityMock);
     });
 
-    it('/POST create workings', async () => {
-        const createdEntity: WorkingDTO = (
-            await request(app.getHttpServer()).post('/api/workings').send(entityMock).expect(201)
+    it('/POST create experiences', async () => {
+        const createdEntity: ExperienceDTO = (
+            await request(app.getHttpServer()).post('/api/experiences').send(entityMock).expect(201)
         ).body;
 
         expect(createdEntity).toEqual(entityMock);
     });
 
-    it('/PUT update workings', async () => {
-        const updatedEntity: WorkingDTO = (
-            await request(app.getHttpServer()).put('/api/workings').send(entityMock).expect(201)
+    it('/PUT update experiences', async () => {
+        const updatedEntity: ExperienceDTO = (
+            await request(app.getHttpServer()).put('/api/experiences').send(entityMock).expect(201)
         ).body;
 
         expect(updatedEntity).toEqual(entityMock);
     });
 
-    it('/PUT update workings from id', async () => {
-        const updatedEntity: WorkingDTO = (
+    it('/PUT update experiences from id', async () => {
+        const updatedEntity: ExperienceDTO = (
             await request(app.getHttpServer())
-                .put('/api/workings/' + entityMock.id)
+                .put('/api/experiences/' + entityMock.id)
                 .send(entityMock)
                 .expect(201)
         ).body;
@@ -83,10 +84,10 @@ describe('Working Controller', () => {
         expect(updatedEntity).toEqual(entityMock);
     });
 
-    it('/DELETE workings', async () => {
-        const deletedEntity: WorkingDTO = (
+    it('/DELETE experiences', async () => {
+        const deletedEntity: ExperienceDTO = (
             await request(app.getHttpServer())
-                .delete('/api/workings/' + entityMock.id)
+                .delete('/api/experiences/' + entityMock.id)
                 .expect(204)
         ).body;
 

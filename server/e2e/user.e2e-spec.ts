@@ -70,7 +70,7 @@ describe('User', () => {
             .send(savedUser)
             .expect(200)).body;
 
-        expect(updatedUser).toEqual(savedUser);
+        expect(updatedUser.firstName).toEqual(savedUser.firstName);
 
         await service.delete(savedUser);
     });
@@ -83,7 +83,7 @@ describe('User', () => {
             .get('/api/admin/users/' + savedUser.login)
             .expect(200)).body;
 
-        expect(getUser).toEqual(savedUser);
+        expect(getUser.login).toEqual(savedUser.login);
 
         await service.delete(savedUser);
     });

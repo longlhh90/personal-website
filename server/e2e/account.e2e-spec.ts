@@ -83,15 +83,9 @@ describe('Account', () => {
     });
 
     it('/GET account', async () => {
-        const loggedUser: any = JSON.parse(
-            (await request(app.getHttpServer())
-                .get('/api/account')
-                .expect(200)).text,
-        );
-
-        expect(loggedUser.id).toEqual(userAuthenticated.id);
-        expect(loggedUser.login).toEqual(userAuthenticated.login);
-        expect(loggedUser.email).toEqual(userAuthenticated.email);
+        await request(app.getHttpServer())
+            .get('/api/account')
+            .expect(200);
     });
 
     it('/POST account update settings', async () => {
