@@ -50,10 +50,7 @@
     "buildTool": "maven",
     "enableHibernateCache": true,
     "reactive": false,
-    "entities": ["Me", "Education", "Working", "Project"],
-    "lastLiquibaseTimestamp": 1627161835000,
-    "herokuAppName": "lukas-site",
-    "herokuDeployType": "git",
-    "herokuJavaVersion": "11"
+    "entities": ["Me", "Experience"],
+    "lastLiquibaseTimestamp": 1627161835000
   }
 }
