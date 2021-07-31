@@ -7,14 +7,14 @@ const logger = new Logger('Config');
 
 export class Config {
     debugLogging = 'debug';
-    'server.port' = '8081';
+    'server.port' = process.env.PORT; // for heroku deployment
     'jhipster.clientApp.name' = 'personal_website';
-    'jhipster.registry.password' = 'admin';
-    'jhipster.security.authentication.jwt.base64-secret' = '';
+    'jhipster.registry.password' = process.env.REGISTRY_PASSWORD;
+    'jhipster.security.authentication.jwt.base64-secret' = process.env.JWT_SECRET;
     'jhipster.security.authentication.jwt.token-validity-in-seconds' = 86400;
     'jhipster.security.authentication.jwt.token-validity-in-seconds-for-remember-me' = 2592000;
     'jhipster.mail.base-url' = 'http://127.0.0.1:${server.port}';
-    'jhipster.mail.from' = 'personal_website@localhost';
+    'jhipster.mail.from' = '';
     'jhipster.swagger.default-include-pattern' = '/api/.*';
     'jhipster.swagger.title' = 'personal_website API';
     'jhipster.swagger.description' = 'personal_website API documentation';
@@ -43,8 +43,8 @@ export class Config {
     'cloud.config.name' = 'personal_website';
     'cloud.config.profile' = 'prod';
     'loud.config.label' = 'master';
-    'crypto.key' = '3772c1cdbd27c225735d116d1e4c5421a3aec26c919cc7ab457f21a4d16a1821';
-    'crypto.iv' = '54f3ad979d9262d3a2dd4489531daf34';
+    'crypto.key' = process.env.CRYPTO_KEY;
+    'crypto.iv' = process.env.CRYPTO_IV;
 
     constructor(properties) {
         this.addAll(properties);
