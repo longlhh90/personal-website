@@ -1,6 +1,10 @@
 import { TypeOrmModuleOptions } from '@nestjs/typeorm';
-
-function ormConfig(): TypeOrmModuleOptions {
+import { MongoMemoryServer } from 'mongodb-memory-server';
+async function ormConfig(): Promise<TypeOrmModuleOptions> {
+    let mongod;
+    if (process.env.BACKEND_ENV !== 'prod') {
+        mongod = await MongoMemoryServer.create();
+    }
     const commonConf = {
         SYNCRONIZE: false,
         ENTITIES: [__dirname + '/domain/*.entity{.ts,.js}'],
@@ -13,8 +17,12 @@ function ormConfig(): TypeOrmModuleOptions {
 
     let ormconfig: TypeOrmModuleOptions = {
         name: 'default',
-        type: 'sqlite',
-        database: '../target/db/sqlite-dev-db.sql',
+        type: 'mongodb',
+        host: 'localhost',
+        port: mongod ? await mongod.getPort() : 0,
+        database: mongod ? await mongod.getDbName() : 'dev',
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
         logging: true,
         synchronize: true,
         entities: commonConf.ENTITIES,
@@ -26,12 +34,8 @@ function ormConfig(): TypeOrmModuleOptions {
     if (process.env.BACKEND_ENV === 'prod') {
         ormconfig = {
             name: 'default',
-            type: 'mysql',
-            database: 'personal_website',
-            host: 'localhost',
-            port: 3307,
-            username: 'sa',
-            password: 'yourStrong(!)Password',
+            type: 'mongodb',
+            url: process.env.MONGO_DB_URL,
             logging: false,
             synchronize: commonConf.SYNCRONIZE,
             entities: commonConf.ENTITIES,
@@ -44,8 +48,12 @@ function ormConfig(): TypeOrmModuleOptions {
     if (process.env.BACKEND_ENV === 'test') {
         ormconfig = {
             name: 'default',
-            type: 'sqlite',
-            database: ':memory:',
+            type: 'mongodb',
+            host: 'localhost',
+            port: await mongod.getPort(),
+            database: await mongod.getDbName(),
+            useNewUrlParser: true,
+            useUnifiedTopology: true,
             keepConnectionAlive: true,
             logging: true,
             synchronize: true,
