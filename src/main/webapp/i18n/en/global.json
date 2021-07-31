@@ -8,9 +8,7 @@
       "entities": {
         "main": "Entities",
         "me": "Me",
-        "education": "Education",
-        "working": "Working",
-        "project": "Project",
+        "experience": "Experience",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
       },
       "account": {
