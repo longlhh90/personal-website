@@ -20,8 +20,8 @@ module.exports = (config, options) => {
       }),
       new FriendlyErrorsWebpackPlugin(),
       new WebpackNotifierPlugin({
-        title: 'Personal Website',
-        contentImage: path.join(__dirname, 'logo-jhipster.png'),
+        title: 'Lukas Website',
+        contentImage: path.join(__dirname, 'ca-vi.png'),
       }),
       new BrowserSyncPlugin(
         {

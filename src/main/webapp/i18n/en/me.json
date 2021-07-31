@@ -20,11 +20,11 @@
       "id": "ID",
       "formalName": "Formal Name",
       "legalName": "Legal Name",
-      "dob": "Dob",
       "email": "Email",
       "linkedin": "Linkedin",
       "facebook": "Facebook",
       "instagram": "Instagram",
+      "github": "Github",
       "resume": "Resume",
       "aboutMe": "About Me",
       "aboutMeShort": "About Me Short"
